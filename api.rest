@@ -1,0 +1,6 @@
+GET http://localhost:80/getall
+Content-Type: application/json
+
+{"name":"Sidorov","phone":"+79001234569"}
+
+###
