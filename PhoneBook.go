@@ -74,7 +74,7 @@ func getPhoneNumber(w http.ResponseWriter, r *http.Request) {
 		var str = string(b)
 		i, err := strconv.Atoi(str)
 		if i > len(Numbers) {
-			fmt.Println("записи с таким id, не существует...")
+			fmt.Println("запись с таким id, не найдена...")
 		} else {
 			fmt.Println(Numbers[i])
 		}
@@ -96,7 +96,7 @@ func deletePhoneNumber(w http.ResponseWriter, r *http.Request) {
 		var str = string(b)
 		i, err := strconv.Atoi(str)
 		if i > len(Numbers) {
-			fmt.Println("записи с таким id, не существует...")
+			fmt.Println("запись с таким id, не существует...")
 		} else {
 			delete(Numbers, i)
 			fmt.Println("record delete...")
@@ -135,7 +135,7 @@ func postPhoneNumber(w http.ResponseWriter, r *http.Request) {
 }
 
 func updatePhoneNumber(w http.ResponseWriter, r *http.Request) {
-	if r.Method != "UPDATE" {
+	if r.Method != "PUT" {
 		fmt.Println("Вы используете неверный метод запроса")
 	} else {
 
@@ -152,10 +152,24 @@ func updatePhoneNumber(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		i := len(Numbers)
-		Numbers[i] = PhoneBook{add.Name, add.Phone}
-		fmt.Println("record update ...")
+		i := 3
+		j := 0
+		flag := true
+		for j < len(Numbers) {
+			if i == j {
+				Numbers[i] = PhoneBook{add.Name, add.Phone}
+				fmt.Println("record update ...")
+				flag = false
+				break
+				//fmt.Println(Numbers[i])
+			} else {
+				j = j + 1
+			}
 
-		fmt.Println(Numbers[i])
+		}
+
+		if flag == true {
+			fmt.Println("запись с таким id, не найдена...")
+		}
 	}
 }

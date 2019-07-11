@@ -1,8 +1,7 @@
-GET http://localhost:80/get
+GET http://localhost:80/getall
 Content-Type: application/json
 
-4
+{"name":"Sidorkov","phone":"+79001234569"}
 
 
 ###
-{"name":"Sidorov","phone":"+79001234569"}
