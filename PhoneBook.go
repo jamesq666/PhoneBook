@@ -75,11 +75,11 @@ func getPhoneNumber(w http.ResponseWriter, r *http.Request) {
 		i, err := strconv.Atoi(str)
 		if i > len(Numbers) {
 			fmt.Println("записи с таким id, не существует...")
-		}else{
+		} else {
 			fmt.Println(Numbers[i])
 		}
 
-		}
+	}
 }
 
 func deletePhoneNumber(w http.ResponseWriter, r *http.Request) {
@@ -97,7 +97,7 @@ func deletePhoneNumber(w http.ResponseWriter, r *http.Request) {
 		i, err := strconv.Atoi(str)
 		if i > len(Numbers) {
 			fmt.Println("записи с таким id, не существует...")
-		}else{
+		} else {
 			delete(Numbers, i)
 			fmt.Println("record delete...")
 		}
@@ -157,4 +157,5 @@ func updatePhoneNumber(w http.ResponseWriter, r *http.Request) {
 		fmt.Println("record update ...")
 
 		fmt.Println(Numbers[i])
+	}
 }
